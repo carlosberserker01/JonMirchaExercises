@@ -1,32 +1,24 @@
-function countCharOnString(str){
-  if(typeof(str) == 'string'){
-    return str.length
-  } else {
-    return "Value is not a string :("
-  }
-}
+const countCharOnString = (str) => 
+  typeof(str) == 'string' 
+    ? str.length 
+    : "Value is not a string :("
+
 
 console.log(countCharOnString('Hello World!'))
 
 
-function cutString(str, endCut){
-  if(typeof(str) == 'string'){
-    return str.slice(0, endCut)
-  }
-}
+const cutString = (str, endCut) =>
+  typeof(str) == 'string' && str.slice(0, endCut)
+  //&& actua como ? de operador ternario pero sin else
 
 console.log(cutString('Hola Mundo', 4))
 
 
-function strToArray(str){
-  return str.split(" ")
-}
-
+const strToArray = str => str.split(" ")
 
 console.log(strToArray('How are you today?'))
 
-function repeatString(str, times){
-  return str.repeat(times)
-}
+
+const repeatString = (str, times) => str.repeat(times)
 
 console.log(repeatString('Hello World! ', 3))
