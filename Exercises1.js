@@ -6,7 +6,8 @@ function countCharOnString(str){
   }
 }
 
-// console.log(countCharOnString('Hello World!'))
+console.log(countCharOnString('Hello World!'))
+
 
 function cutString(str, endCut){
   if(typeof(str) == 'string'){
@@ -14,10 +15,18 @@ function cutString(str, endCut){
   }
 }
 
-// console.log(cutString('Hola Mundo', 4))
+console.log(cutString('Hola Mundo', 4))
+
 
 function strToArray(str){
   return str.split(" ")
 }
 
-// console.log(strToArray('How are you today?'))
+
+console.log(strToArray('How are you today?'))
+
+function repeatString(str, times){
+  return str.repeat(times)
+}
+
+console.log(repeatString('Hello World! ', 3))
