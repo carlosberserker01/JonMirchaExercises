@@ -95,3 +95,71 @@ const deletePattern = (str = '', pattern) => str.replaceAll(pattern, "")
 
 
 console.log(deletePattern("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz"))
+
+// 9) Programa una función que obtenga un numero aleatorio entre 501 y 600.
+// const randomNumberBetween501And600 = () => Math.floor(Math.random() * (600 - 501) + 501)
+const randomNumberBetween501And600 = () => Math.round(Math.random() * 100) + 500
+console.log("EX.9:", randomNumberBetween501And600());
+
+// 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.
+const isCapicua = (num = undefined) => {
+  if(!num) return 'No has proporcionado el número'
+  if(typeof num !== 'number') return 'Este no es un número'
+  num = num.toString()
+  const reverseredStrNumber = num.split("").reverse().join("")
+  return num === reverseredStrNumber ? true : false
+}
+console.log("EX.10:", isCapicua(212.212));
+
+// 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.
+const calculateFactorial = (num = undefined) => {
+  if(!num) return 'No has proporcionado el número'
+  if(typeof num !== 'number') return 'El valor ingresado no es un número'
+  if(num < 1) return 'No se puede calcular el factorial de 0 ni de números negativos'
+  let result = num
+  let count = num
+  for (let i = 0; i < num -1; i++) {
+    result *= (count - 1)
+    count--
+  }
+  return result
+}
+console.log("EX.11:", calculateFactorial(5));
+
+// 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+const isPrime = (num = undefined) => {
+  if(!num) return 'No proporcionaste el número'
+  if(typeof num !== 'number') return 'El dato que proporcionaste no es número'
+  let initialValue = 2
+  while(num > initialValue){
+    let res = num % initialValue
+    if(res === 0){
+      return false
+    } else {
+      initialValue++
+    }
+  } 
+  return true
+}
+console.log("EX.12:", isPrime(85));
+
+// 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+const isEvenOrOdd = (num = undefined) => {
+  // if(!num) return 'No proporcionaste el número'
+  if(num === undefined) return 'No proporcionaste el número'
+  if(typeof num !== 'number') return 'El dato que proporcionaste no es número'
+  return num % 2 === 0 ? 'Even' : 'Odd'
+}
+console.log("EX.13:", isEvenOrOdd(0));
+
+// 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+const celsiusToFarenheitAndViceversa = (num = undefined, type = '') => {
+  if(num === undefined) return 'No proporcionaste el número'
+  if(!type) return 'No propocionaste la unidad'
+  return (type === 'C')
+    ? `${(num * 1.8) + 32}°`
+    : (type === 'F')
+      ? `${(num - 32) / 1.8}°`
+      : 'La unidad es invalida'
+}
+console.log("EX.14:", celsiusToFarenheitAndViceversa(32, 'F'));
