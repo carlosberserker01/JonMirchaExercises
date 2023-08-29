@@ -130,6 +130,7 @@ console.log("EX.11:", calculateFactorial(5));
 const isPrime = (num = undefined) => {
   if(!num) return 'No proporcionaste el número'
   if(typeof num !== 'number') return 'El dato que proporcionaste no es número'
+  if(num < 2) return 'El número no puede ser uno, cero ni negativo.'
   let initialValue = 2
   while(num > initialValue){
     let res = num % initialValue
@@ -153,13 +154,172 @@ const isEvenOrOdd = (num = undefined) => {
 console.log("EX.13:", isEvenOrOdd(0));
 
 // 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
-const celsiusToFarenheitAndViceversa = (num = undefined, type = '') => {
-  if(num === undefined) return 'No proporcionaste el número'
+const celsiusToFarenheitAndViceversa = (degrees = undefined, type = '') => {
+  if(degrees === undefined) return 'No proporcionaste el número'
   if(!type) return 'No propocionaste la unidad'
   return (type === 'C')
-    ? `${(num * 1.8) + 32}°`
+    ? `${(degrees * 1.8) + 32}°`
     : (type === 'F')
-      ? `${(num - 32) / 1.8}°`
+      ? `${(degrees - 32) / 1.8}°`
       : 'La unidad es invalida'
 }
 console.log("EX.14:", celsiusToFarenheitAndViceversa(32, 'F'));
+
+// 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+const binaryToDecimalAndViceversa = (num = undefined, base = undefined) => {
+  if(!num) return 'No proporcionaste el numero a convertir'
+  if(!base) return 'No proporcionaste la base'
+  if(typeof num !== 'number') return 'El dato ingresado no es un numero'
+  if(typeof base !== 'number') return 'El dato ingresado no es un numero'
+  if(num < 0) return 'No se puede convertir un numero negativo'
+  if(base !== 2 && base !== 10) return 'Solo se acepta base decimal (10) o binaria (2)'
+  if(base === 2){
+    let arrayNumbers = num.toString().split("")
+    let max = arrayNumbers.length - 1
+    for (let i = 0; i < arrayNumbers.length; i++) {
+      arrayNumbers[i] = parseInt(arrayNumbers[i]) * (2**max)
+      max--
+    }
+    return arrayNumbers.reduce((a, b) => a + b)
+  } else if (base === 10){
+    let arr = []
+    while(num > 1){
+      let residuo = num % 2
+      arr.push(residuo)
+      num = Math.floor(num / 2)
+    }
+    arr.push(num)
+    return parseInt(arr.reverse().join(""))
+  }
+}
+console.log("EX.15:", binaryToDecimalAndViceversa(1101010, 2));
+console.log("EX.15:", binaryToDecimalAndViceversa(365, 10));
+
+// 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
+const discount = (num = undefined, discount = undefined) => {
+  if(num === undefined) return 'No se ingreso el valor'
+  if(discount === undefined) return 'No se ingreso el descuento'
+  return num - (num * (discount / 100))
+}
+console.log("EX.16:", discount(1000, 20));
+
+// 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
+const calculateYears = (date) => {
+  let milisecondsBetweenTodayAndDate = Date.now() - date 
+  let newDate = new Date(milisecondsBetweenTodayAndDate)
+  return newDate.getFullYear() - 1970
+}
+console.log("EX.17:", calculateYears(new Date(1994,7,1)))
+
+// 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
+const countVowelsAndConsonants = (str) => {
+  const vowels = 'aeiou'
+  const consonants = 'bcdfghjklmnpqrstvwxyz'
+  let vowelsCount = 0
+  let consonantsCount = 0
+  for (let i = 0; i < str.length; i++) {
+    if(vowels.split("").includes(str[i])){
+      vowelsCount++
+    } else if (consonants.split("").includes(str[i])){
+      consonantsCount++
+    } 
+  }
+  return `Vocales: ${vowelsCount}, Consonantes: ${consonantsCount}`
+}
+console.log("EX.18:", countVowelsAndConsonants("Hola mundo"));
+
+// 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
+const validName = (str) => {
+  const regExp = new RegExp(/^[a-z ,.'-]+$/i)
+  return str.match(regExp) ? 'Válido' : 'Inválido'
+}
+console.log("EX.19:", validName("Carlos Berserker"));
+
+// 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.
+const validEmail = (email) => {
+  const regExpEmail = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+  return email.match(regExpEmail) ? 'Válido' : 'Inválido'
+}
+console.log("EX.20:", validEmail('carlospokz_94@homtail'));
+
+
+// 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
+const arrayToSquare = (arr) => {
+  let arraySquare = []
+  arr.forEach(element => {
+    arraySquare.push(element ** 2)
+  });
+  return arraySquare
+}
+console.log("EX.21:", arrayToSquare([1, 4, 5]));
+
+// 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
+const maxAndMin = (arr) => {
+  let min = 0, max = 0
+  if(arr[0] < arr[1]){
+    min = arr[0]
+    max = arr[1]
+  } else if (arr[0] > arr[1]){
+    min = arr[1]
+    max = arr[0]
+  } else {
+    min = arr[0]
+    max = arr[1]
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if(arr[i] <= min){
+      min = arr[i]
+    } else if (arr[i] >= max){
+      max = arr[i]
+    }
+  }
+  return `MAX: ${max}, MIN: ${min}`
+}
+console.log("EX.22:", maxAndMin([-15, -400, 599, 999, -60]));
+
+// 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
+const evenAndOddArrays = (arr) => {
+  let evenArray = []
+  let oddArray = []
+  arr.forEach(element => {
+    if(element % 2 === 0){
+      evenArray.push(element)
+    } else {
+      oddArray.push(element)
+    }
+  })
+  return `Pares: ${evenArray}, Nones: ${oddArray}`
+}
+console.log("EX.23:", evenAndOddArrays(([1,2,3,4,5,6,7,8,9,0])));
+
+// 24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.
+const sortArray = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    if(arr[i] < arr[i+1]){
+      
+    } else if (arr[i] > arr[i+1]){
+      [arr[i], arr[i+1]] = [arr[i+1], arr[i]]
+    }
+  }
+  return arr
+}
+console.log("EX.24:", sortArray([7, 5, 7, 8, 6]));
+// console.log("EX.24:", sortArray([5, 7, 7, 8, 6]));
+
+// 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].
+const deleteDuplicatesFromArray = (arr) => {
+  let newArr = []
+  arr.forEach(element => {
+    if(!newArr.includes(element)){
+      newArr.push(element)
+    }
+  })
+  return newArr
+}
+console.log("EX.25:", deleteDuplicatesFromArray(["x", 10, "x", 2, "10", 10, true, true]));
+
+// 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.
+const promedio = (arr) => {
+  return (arr.reduce((a, b) => a + b)) / arr.length
+}
+console.log("EX.26:", promedio([9,8,7,6,5,4,3,2,1,0]));
