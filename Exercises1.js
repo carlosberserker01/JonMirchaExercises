@@ -205,6 +205,7 @@ console.log("EX.16:", discount(1000, 20));
 
 // 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
 const calculateYears = (date) => {
+  if(!(date instanceof Date)) return console.log("El valor que insertaste no es una fecha.");
   let milisecondsBetweenTodayAndDate = Date.now() - date 
   let newDate = new Date(milisecondsBetweenTodayAndDate)
   return newDate.getFullYear() - 1970
@@ -212,35 +213,53 @@ const calculateYears = (date) => {
 console.log("EX.17:", calculateYears(new Date(1994,7,1)))
 
 // 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
-const countVowelsAndConsonants = (str) => {
+const countVowelsAndConsonants = (str = "") => {
+  if(!str) return console.log("No ingresaste una cadena de texto");
+  if(typeof str !== 'string') return console.log("No es una cadena de texto");
   const vowels = 'aeiou'
   const consonants = 'bcdfghjklmnpqrstvwxyz'
   let vowelsCount = 0
   let consonantsCount = 0
-  for (let i = 0; i < str.length; i++) {
-    if(vowels.split("").includes(str[i])){
+  let newStr = str.toLowerCase()
+  // for (let i = 0; i < newStr.length; i++) {
+  //   if(vowels.split("").includes(newStr[i])){
+  //     vowelsCount++
+  //   } else if (consonants.split("").includes(newStr[i])){
+  //     consonantsCount++
+  //   } 
+  // }
+  // return `Vocales: ${vowelsCount}, Consonantes: ${consonantsCount}`
+  for (const letter of newStr) {
+    if(/[AEIOUaeiou]/.test(letter)){
       vowelsCount++
-    } else if (consonants.split("").includes(str[i])){
+    }
+    if(/[bcdfghjklmnpqrstvwxyz]/.test(letter)){
       consonantsCount++
-    } 
+    }
   }
   return `Vocales: ${vowelsCount}, Consonantes: ${consonantsCount}`
 }
 console.log("EX.18:", countVowelsAndConsonants("Hola mundo"));
 
 // 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
-const validName = (str) => {
-  const regExp = new RegExp(/^[a-z ,.'-]+$/i)
-  return str.match(regExp) ? 'Válido' : 'Inválido'
+const validName = (name = "") => {
+  if(!name) return console.log("No ingresaste una cadena de texto");
+  if(typeof name !== 'string') return console.log("No es una cadena de texto");
+  name = name.trim()
+  let regExpName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/g
+  return regExpName.test(name) ? `${name} es válido` : `${name} NO es válido`
 }
-console.log("EX.19:", validName("Carlos Berserker"));
+console.log("EX.19:", validName("   Carlos"));
 
 // 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.
-const validEmail = (email) => {
-  const regExpEmail = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
-  return email.match(regExpEmail) ? 'Válido' : 'Inválido'
+const validEmail = (email = "") => {
+  if(!email) return console.log("No ingresaste una cadena de texto");
+  if(typeof email !== 'string') return console.log("No es una cadena de texto");
+  // let regExpEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  let regExpEmail = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i
+  return regExpEmail.test(email) ? `El correo ${email} es válido` : `El correo ${email} NO es válido`
 }
-console.log("EX.20:", validEmail('carlospokz_94@homtail'));
+console.log("EX.20:", validEmail('carlospokz_94@hotmail.com'));
 
 
 // 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
