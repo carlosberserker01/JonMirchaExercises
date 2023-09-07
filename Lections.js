@@ -46,12 +46,70 @@
 // const [one, two, three] = numeros
 // console.log(typeof one);
 
-const sum = (...numbers) => {
-  let result = 0
-  numbers.forEach(number => {
-    result += number
-  })
-  return result
+// const sum = (...numbers) => {
+//   let result = 0
+//   numbers.forEach(number => {
+//     result += number
+//   })
+//   return result
+// }
+
+// console.log(sum(5, 6, 9));
+
+const animal = {
+  nombre: 'Beyi',
+  sonar(){
+    console.log("Hago sonidos");
+  }
 }
 
-console.log(sum(5, 6, 9));
+const animal2 = {
+  nombre: 'Lola Bunny',
+  sonar(){
+    console.log("Hago sonidos");
+  }
+}
+
+console.log(animal);
+
+// FUNCION CONSTRUCTORA
+function Animal(nombre, genero) {
+  // Atributos
+  this.nombre = nombre;
+  this.genero = genero;
+
+  // Metodos
+  this.sonar = function(){
+    console.log("Hago sonidos");
+  }
+  this.saludar = function(){
+    console.log(`Hola me llamo ${this.nombre}`);
+  }
+}
+
+// FUNCION CONSTRUCTORA CON METODOS FUERA DEL OBJECTO
+function Animal(nombre, genero) {
+  // Atributos
+  this.nombre = nombre;
+  this.genero = genero;
+}
+
+Animal.prototype.sonar = function (){
+  console.log("Hago sonido");
+}
+
+Animal.prototype.saludar = function (){
+  console.log(`Hola me llamo ${this.nombre}`);
+}
+
+const snoopy = new Animal("Snoopy", "macho"),
+      lolaBunny = new Animal("Lola Bunny", "hembra");
+
+console.log(snoopy);
+console.log(lolaBunny);
+
+snoopy.sonar()
+snoopy.saludar()
+
+lolaBunny.sonar()
+lolaBunny.saludar()
