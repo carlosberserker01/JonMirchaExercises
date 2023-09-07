@@ -261,79 +261,107 @@ const validEmail = (email = "") => {
 }
 console.log("EX.20:", validEmail('carlospokz_94@hotmail.com'));
 
-
 // 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
-const arrayToSquare = (arr) => {
-  let arraySquare = []
-  arr.forEach(element => {
-    arraySquare.push(element ** 2)
-  });
+const arrayToSquare = (arr = undefined) => {
+  if(arr === undefined) return 'No colocaste el arreglo'
+  if(!(arr instanceof Array)) return 'El tipo de dato no es un arreglo'
+  if(arr.length === 0) return 'El arreglo esta vacio'
+  for (const element of arr) {
+    if(typeof element !== 'number') return 'El arreglo no tiene valores numéricos'
+  }
+  // let arraySquare = []
+  // arr.forEach(element => {
+  //   arraySquare.push(element ** 2)
+  // });
+  // return arraySquare
+  const arraySquare = arr.map(number => number ** 2)
   return arraySquare
 }
 console.log("EX.21:", arrayToSquare([1, 4, 5]));
 
 // 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
 const maxAndMin = (arr) => {
-  let min = 0, max = 0
-  if(arr[0] < arr[1]){
-    min = arr[0]
-    max = arr[1]
-  } else if (arr[0] > arr[1]){
-    min = arr[1]
-    max = arr[0]
-  } else {
-    min = arr[0]
-    max = arr[1]
+  // let min = 0, max = 0
+  // if(arr[0] < arr[1]){
+  //   min = arr[0]
+  //   max = arr[1]
+  // } else if (arr[0] > arr[1]){
+  //   min = arr[1]
+  //   max = arr[0]
+  // } else {
+  //   min = arr[0]
+  //   max = arr[1]
+  // }
+  // for (let i = 0; i < arr.length; i++) {
+  //   if(arr[i] <= min){
+  //     min = arr[i]
+  //   } else if (arr[i] >= max){
+  //     max = arr[i]
+  //   }
+  // }
+  // return `MAX: ${max}, MIN: ${min}`
+  if(arr === undefined) return 'No colocaste el arreglo'
+  if(!(arr instanceof Array)) return 'El tipo de dato no es un arreglo'
+  if(arr.length === 0) return 'El arreglo esta vacio'
+  for (const element of arr) {
+    if(typeof element !== 'number') return 'El arreglo no tiene valores numéricos'
   }
-  for (let i = 0; i < arr.length; i++) {
-    if(arr[i] <= min){
-      min = arr[i]
-    } else if (arr[i] >= max){
-      max = arr[i]
-    }
-  }
-  return `MAX: ${max}, MIN: ${min}`
+  return `Max: ${Math.max(...arr)} y min: ${Math.min(...arr)}`
 }
 console.log("EX.22:", maxAndMin([-15, -400, 599, 999, -60]));
 
 // 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
 const evenAndOddArrays = (arr) => {
-  let evenArray = []
-  let oddArray = []
-  arr.forEach(element => {
-    if(element % 2 === 0){
-      evenArray.push(element)
-    } else {
-      oddArray.push(element)
-    }
-  })
-  return `Pares: ${evenArray}, Nones: ${oddArray}`
+  // let evenArray = []
+  // let oddArray = []
+  // arr.forEach(element => {
+  //   if(element % 2 === 0){
+  //     evenArray.push(element)
+  //   } else {
+  //     oddArray.push(element)
+  //   }
+  // })
+  // return `Pares: ${evenArray}, Nones: ${oddArray}`
+  return {
+    pares: arr.filter(num => num % 2 === 0),
+    impares: arr.filter(num => num % 2 !== 0)
+  }
 }
 console.log("EX.23:", evenAndOddArrays(([1,2,3,4,5,6,7,8,9,0])));
 
 // 24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.
 const sortArray = (arr) => {
-  for (let i = 0; i < arr.length; i++) {
-    if(arr[i] < arr[i+1]){
+  // for (let i = 0; i < arr.length; i++) {
+  //   if(arr[i] < arr[i+1]){
       
-    } else if (arr[i] > arr[i+1]){
-      [arr[i], arr[i+1]] = [arr[i+1], arr[i]]
-    }
+  //   } else if (arr[i] > arr[i+1]){
+  //     [arr[i], arr[i+1]] = [arr[i+1], arr[i]]
+  //   }
+  // }
+  // return arr
+  return {
+    arr,
+    asc: arr.map(element => element).sort(),
+    desc: arr.map(element => element).sort().reverse()
+    //remove duplicates
   }
-  return arr
 }
 console.log("EX.24:", sortArray([7, 5, 7, 8, 6]));
 // console.log("EX.24:", sortArray([5, 7, 7, 8, 6]));
 
 // 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].
 const deleteDuplicatesFromArray = (arr) => {
-  let newArr = []
-  arr.forEach(element => {
-    if(!newArr.includes(element)){
-      newArr.push(element)
-    }
-  })
-  return newArr
+  // let newArr = []
+  // arr.forEach(element => {
+  //   if(!newArr.includes(element)){
+  //     newArr.push(element)
+  //   }
+  // })
+  // return newArr
+  return {
+    arr,
+    // sinDuplicados: arr.map(element => )
+  }
 }
 console.log("EX.25:", deleteDuplicatesFromArray(["x", 10, "x", 2, "10", 10, true, true]));
 
