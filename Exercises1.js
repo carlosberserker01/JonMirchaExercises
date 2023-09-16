@@ -358,15 +358,216 @@ const deleteDuplicatesFromArray = (arr) => {
   //   }
   // })
   // return newArr
+
+  // return {
+  //   arr,
+  //   sinDuplicados: arr.filter((value, index, self) => self.indexOf(value) === index)
+  // }
+
+  //La naturaleza del set es no poder repetir elementos
   return {
     arr,
-    // sinDuplicados: arr.map(element => )
+    sinDuplicados: [...new Set(arr)]
   }
+
+
 }
 console.log("EX.25:", deleteDuplicatesFromArray(["x", 10, "x", 2, "10", 10, true, true]));
 
 // 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.
 const promedio = (arr) => {
-  return (arr.reduce((a, b) => a + b)) / arr.length
+  // Mi version 
+  // return (arr.reduce((total, num) => total + num)) / arr.length
+
+  //Version larga de reduce
+  return arr.reduce((total, num, index, arr) => {
+    total += num
+    if(index === arr.length - 1){
+      return total / arr.length
+    } else {
+      return total
+    }
+  })
 }
 console.log("EX.26:", promedio([9,8,7,6,5,4,3,2,1,0]));
+
+// 27) Programa una clase llamada Pelicula.
+
+// La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
+//   - Todos los datos del objeto son obligatorios.
+//   - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+//      7 restantes números.
+//   - Valida que el título no rebase los 100 caracteres.
+//   - Valida que el director no rebase los 50 caracteres.
+//   - Valida que el año de estreno sea un número entero de 4 dígitos.
+//   - Valida que el país o paises sea introducidos en forma de arreglo.
+//   - Valida que los géneros sean introducidos en forma de arreglo.
+//   - Valida que los géneros introducidos esten dentro de los géneros 
+//      aceptados*.
+//   - Crea un método estático que devuelva los géneros aceptados*.
+//   - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+//     decimal de una posición.
+//   - Crea un método que devuelva toda la ficha técnica de la película.
+//   - Apartir de un arreglo con la información de 3 películas genera 3 
+//     instancias de la clase de forma automatizada e imprime la ficha técnica 
+//     de cada película.
+// * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+
+class Pelicula{
+  constructor({id, titulo, director, anio, paises, generos, calificacionIMDB}){
+    this.id = id,
+    this.titulo = titulo;
+    this.director = director;
+    this.anio = anio;
+    this.paises = paises;
+    this.generos = generos;
+    this.calificacionIMDB = calificacionIMDB;
+
+    this.validarId(id)
+    this.validarTitulo(titulo)
+    this.validarDirector(director)
+    this.validarAnio(anio)
+    this.validarPaises(paises)
+    this.validarGeneros(generos)
+    this.validarCalificacion(calificacionIMDB)
+  }
+
+  validarCadena(propiedad, valor){
+    if(!valor) return console.log(`${propiedad} esta vacio`)
+    if (typeof valor !== 'string') return console.log(`${propiedad} no es una cadena de texto`);
+    return true
+  }
+
+  validarLongitudCadena(valor, longitud){
+    if(valor.length > longitud) return console.log('rebasa la longitud');
+    return true
+  }
+
+  validarEsNumero(propiedad, numero){
+    if(numero === undefined) return console.log(`no se ingreso ningun dato en ${propiedad}`);
+    if(typeof numero !== 'number') return console.log('no es un numero');
+    return true
+  }
+
+  validarArreglo(propiedad, arr){
+    if(!arr) return console.log(`No se ingreso ningun dato ${propiedad}`);
+    if(!(arr instanceof Array)) return console.log('no es un arreglo');
+    if(arr.length === 0) return console.log('no hay ningun elemento en el arreglo');
+    for (const genero of arr) {
+      if(typeof genero !== 'string') return console.log('Algun valor del arreglo no es texto');
+    }
+    return true
+  }
+
+  validarId(id){
+    if(this.validarCadena("ID", id)){
+      if(!(/^[a-z]{2}[0-9]{7}$/.test(id))) return console.log('Debe tener 2 letras minusculas y 9 numeros');
+    }
+  }
+
+  validarTitulo(titulo){
+    if(this.validarCadena("TITULO", titulo)){
+      // if(titulo.length > 100) return console.log('Titulo mayor a 100 caracteres');
+      this.validarLongitudCadena(titulo, 100)
+    }
+  }
+
+  validarDirector(director){
+    if(this.validarCadena("DIRECTOR", director)){
+      // if(director.length > 50) return console.log('Director mayor a 50 caracteres');
+      this.validarLongitudCadena(director, 50)
+    }
+  }
+
+  validarAnio(anio){
+    if(this.validarEsNumero('anio', anio)){
+      if(!(/^[0-9]{4}$/.test(anio))) return console.log('debe ser de 4 digitos');
+    }
+  }
+
+  validarPaises(paises){
+    this.validarArreglo('PAISES', paises)
+  }
+
+  validarGeneros(generos){
+    if(this.validarArreglo('PAISES', generos)){
+      for (let genero of generos) {
+        if(!(Pelicula.listaGeneros.includes(genero))){
+          return console.log('el genero no es aceptado');
+        }
+      }
+    }
+  }
+
+  validarCalificacion(calificacionIMDB){
+    if(this.validarEsNumero('calificacion', calificacionIMDB)){
+      if(calificacionIMDB < 0 || calificacionIMDB > 10) return console.log('no se puede una calificacion menor a 0 o mayor a 10');
+    }
+  }
+
+  static get listaGeneros(){
+    return ['Action', 'Adult', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary' ,'Drama', 'Family', 'Fantasy', 'Film Noir', 'Game-Show', 'History', 'Horror', 'Musical', 'Music', 'Mystery', 'News', 'Reality-TV', 'Romance', 'Sci-Fi', 'Short', 'Sport', 'Talk-Show', 'Thriller', 'War', 'Western'];
+  }
+
+  // El metodo estatico solo se puede consultar llamando a la clase, es decir Pelicula.generosAceptados()
+  // Por el contratio los metodos que no son static y que fueron creados en el constructor del objeto se llaman desde el objeto creado, no de la clase
+  // es decir, no se llama a Pelicula si no a nuevo.verFicha()
+  static generosAceptados(){
+    return console.log(`los generos aceptados son: ${Pelicula.listaGeneros.join(", ")}`);
+  }
+
+  verFicha(){
+    return console.log('peli', this.id, this.titulo, this.director, this.anio, this.paises, this.generos, this.calificacionIMDB);
+  }
+}
+
+// const nuevo = new Pelicula(
+//   {
+//     id: 'ab1234567', 
+//     titulo: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean m', 
+//     director: 'Lorem ipsum dolor sit amet, consectetuer adipiscin',
+//     anio: 2012,
+//     paises: ['USA'],
+//     generos: ['Action', 'Animation'],
+//     calificacionIMDB: 10
+//   }
+// )
+
+// Pelicula.generosAceptados()
+// nuevo.verFicha()
+// const nuevo = new Pelicula('Chappie', 'Neill Blomkamp', 2015, ['Estados Unidos', 'Sudafrica'], ['Ciencia Ficcion'], '6.8')
+// console.log("EX: 27", nuevo);
+
+const pelis = [
+  {
+    id: 'ab1234567', 
+    titulo: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean miii', 
+    director: 'Lorem ipsum dolor sit amet, consectetuer adipiscin',
+    anio: 2012,
+    paises: ['Estados Unidos', 'Sudafrica'],
+    generos: ['Action', 'Animation'],
+    calificacionIMDB: 10
+  },
+  {
+    id: 'bd1234567', 
+    titulo: 'Terminator', 
+    director: 'Arnold',
+    anio: 1990,
+    paises: ['Estados Unidos'],
+    generos: ['Action'],
+    calificacionIMDB: 9.5
+  },
+  {
+    id: 'zy1234567', 
+    titulo: 'Yo robot', 
+    director: 'Will',
+    anio: 2004,
+    paises: ['Estados Unidos'],
+    generos: ['Action', 'Sci-Fi'],
+    calificacionIMDB: 8
+  }
+]
+
+pelis.forEach(pelicula => {
+  new Pelicula(pelicula).verFicha();
+});
