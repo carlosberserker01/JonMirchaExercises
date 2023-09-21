@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body{
+    background-color: #000027;
+  }
+  h1{
+    color: #E4F1FF;
+  }
+</style>
+<body>
+  <h1>Nuevos tipos de datos en JavaScript</h1>
+  <script>
+    // let id = Symbol("id")
+    // let id2 = Symbol("id2")
+
+    // console.log(id === id2);
+    // console.log(id, id2);
+    // console.log(typeof id, typeof id2);
+
+    // const NOMBRE = Symbol("nombre")
+    // const SALUDAR = Symbol("saludar")
+
+    // const persona = {
+    //   [NOMBRE]: "Carlos"
+    // }
+
+    // console.log(persona);
+
+    // persona.NOMBRE = "Berserker"
+    // console.log(persona);
+    // console.log(persona.NOMBRE);
+    // console.log(persona[NOMBRE]);
+
+    // persona[SALUDAR] = function () {
+    //   console.log("Hola");
+    // }
+
+    // console.log(persona);
+
+    // persona[SALUDAR]()
+
+    // for (const propiedad in persona) {
+    //   console.log(propiedad);
+    //   console.log(persona[propiedad]);
+    // }
+
+    // console.log(Object.getOwnPropertySymbols(persona))
+
+
+
+
+    // const set = new Set([1, 2, 3, 3, 4, 5, true, false, false, {}, {}, "hola", "HOla"]);
+    // console.log(set);
+    // console.log(set.size);
+
+    // const set2 = new Set()
+    // set2.add(1)
+    // set2.add(2)
+    // set2.add(2)
+    // set2.add(3)
+    // set2.add(true)
+    // set2.add(false)
+    // set2.add(true)
+    // set2.add({})
+    // console.log(set2);
+    // console.log(set2.size);
+    
+    // console.log("Recorriendo set");
+
+    // for (const item of set) {
+    //   console.log(item);
+    // }
+
+    // console.log("Recorriendo set2");
+
+    // set2.forEach(element => {
+    //   console.log(element);
+    // });
+
+    // let arr = Array.from(set)
+    // console.log(arr[5]);
+
+    // set.delete({})
+    // console.log("del", set);
+
+    // console.log(set.has("hola"));
+    // console.log(set.has(19));
+
+    // set2.clear()
+    // console.log(set2);
+
+
+
+
+    const mapa = new Map()
+    mapa.set("nombre", "Carlos")
+    mapa.set("apellido", "Lopez")
+    mapa.set("edad", 29)
+
+    console.log(mapa);
+    console.log(mapa.size)
+
+    console.log(mapa.has("correo"))
+    console.log(mapa.has("nombre"))
+    console.log(mapa.get("nombre"))
+    mapa.set("nombre", "Alberto")
+    console.log(mapa.get("nombre"));
+    mapa.delete("apellido")
+    console.log(mapa);
+
+    for (const [key, value] of mapa) {
+      console.log(key, value);
+    }
+
+    mapa.set(19, "diecinueve")
+    mapa.set(false, "falso")
+    mapa.set({}, {})
+    console.log(mapa);
+
+    const mapa2 = new Map([
+      ["nombre", "Carlosss"],
+      ["edad", 29],
+      ["animal", "no"],
+      [null, "nulo"]
+    ])
+
+    console.log(mapa2);
+
+    const llavesMapa2 = [...mapa2.keys()]
+    const valoresMapa2 = [...mapa2.values()]
+
+    console.log(llavesMapa2);
+    console.log(valoresMapa2);
+
+
+  </script>
+</body>
+</html>
