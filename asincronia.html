@@ -169,12 +169,12 @@
 
   async function funcionAsincronaDeclarada(){
     try {
-      console.log('Inicio Async Function');
+      console.log('Inicio Async Function Declarada');
 
       let obj = await cuadradoPromise(0)
       console.log("Async function", obj);
 
-      obj = await cuadradoPromise('1')
+      obj = await cuadradoPromise(1)
       console.log("Async function", obj);
 
       obj = await cuadradoPromise(2)
@@ -189,13 +189,40 @@
       obj = await cuadradoPromise(5)
       console.log("Async function", obj);
 
-      console.log("fin de async");
+      console.log("fin de async function declarada");
     } catch (err) {
       console.error(err);
     }
   }
 
   funcionAsincronaDeclarada()
+
+  const funcionAsincronaExpresada = async () => {
+    try {
+      console.log('Inicio Async Function Expresada');
+
+      let obj = await cuadradoPromise(6)
+      console.log("Async function", obj);
+
+      obj = await cuadradoPromise(7)
+      console.log("Async function", obj);
+
+      obj = await cuadradoPromise(8)
+      console.log("Async function", obj);
+
+      obj = await cuadradoPromise(9)
+      console.log("Async function", obj);
+
+      obj = await cuadradoPromise(10)
+      console.log("Async function", obj);
+
+      console.log("fin de async function expresada");
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  funcionAsincronaExpresada()
 
     // fetch('https://jsonplaceholder.typicode.com/toos/1')
     //   .then(response => {
