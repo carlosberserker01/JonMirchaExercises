@@ -1,0 +1,15 @@
+{
+  "cadena": "Carlos",
+  "numero": "35",
+  "boolean": "true",
+  "arreglo": [
+    "correr",
+    "programar",
+    "cocinar"
+  ],
+  "objeto": {
+    "twitter": "@carlosberserker",
+    "email": "mail@exampple.com"
+  },
+  "nulo": null
+}
