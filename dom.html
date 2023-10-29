@@ -6,11 +6,35 @@
   <title>WEB APIs</title>
 </head>
 <style>
-  body{
-    background-color: #000027;
+  :root{
+    --yellow-color: #F7DF1E;
+    --dark-color: #222;
   }
-  h1, h2, h3, p, li{
-    color: #E4F1FF;
+
+  .card{
+    display: inline-block;
+    background-color: var(--dark-color);
+    color: var(--yellow-color);
+  }
+
+  .card figcaption{
+    padding: 1rem;
+  }
+
+  .rotate-45 {
+    transform: rotate(45deg);
+  }
+
+  .rotate-135 {
+    transform: rotate(135deg);
+  }
+
+  .opacity-80 {
+    opacity: .8;
+  }
+
+  .sepia {
+    filter: sepia();
   }
 </style>
 <body>
@@ -49,7 +73,7 @@
     </ul>
   </nav>
   <input type="text" name="nombre" placeholder="Nombre">
-  <a class="link-dom" href="dom.html" data-id = "1" data-description="Document Object Model">DOM</a>
+  <a class="link-dom" href="dom.html" style="background-color: #F7DF1E; color: #222;" data-id = "1" data-description="Document Object Model">DOM</a>
   <section class="cards">
     <figure class="card">
       <img src="https://picsum.photos/id/1/200/200" alt="Tech">
