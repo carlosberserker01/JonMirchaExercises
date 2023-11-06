@@ -165,3 +165,17 @@
 // $whatIsDOM.textContent = text;
 // $whatIsDOM.innerHTML = text;
 // $whatIsDOM.outerHTML = text;
+
+
+
+
+// *************67. DOM Traversing: Recorriendo el DOM *************
+const $cards = document.querySelector('.cards')
+console.log($cards);
+console.log($cards.children);
+console.log($cards.children[2]);
+console.log($cards.parentElement);
+console.log($cards.firstChild);
+console.log($cards.firstElementChild);
+console.log($cards.lastChild);
+console.log($cards.lastElementChild);
