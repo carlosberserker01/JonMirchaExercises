@@ -1,101 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WEB APIs</title>
-</head>
-<style>
-  :root{
-    --yellow-color: #F7DF1E;
-    --dark-color: #222;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEB APIs</title>
+  </head>
+  <style>
+    :root {
+      --yellow-color: #f7df1e;
+      --dark-color: #222;
+    }
 
-  .card{
-    display: inline-block;
-    background-color: var(--dark-color);
-    color: var(--yellow-color);
-  }
+    body {
+      background-color: gray;
+    }
 
-  .card figcaption{
-    padding: 1rem;
-  }
+    .card {
+      display: inline-block;
+      background-color: var(--dark-color);
+      color: var(--yellow-color);
+    }
 
-  .rotate-45 {
-    transform: rotate(45deg);
-  }
+    .card figcaption {
+      padding: 1rem;
+    }
 
-  .rotate-135 {
-    transform: rotate(135deg);
-  }
+    .rotate-45 {
+      transform: rotate(45deg);
+    }
 
-  .opacity-80 {
-    opacity: .8;
-  }
+    .rotate-135 {
+      transform: rotate(135deg);
+    }
 
-  .sepia {
-    filter: sepia();
-  }
-</style>
-<body>
-  <h1>WEB APIs</h1>
-  <h2>DOM: Document Object Model</h2>
-  <h2>BOM: Browser Object Model</h2>
-  <h2>CSSOM: CSS Object Model</h2>
-  <h2>WEB APIs</h2>
-  <ul>
-    <li>Eventos</li>
-    <li>Forms</li>
-    <li>AJAX - Fetch</li>
-    <li>History</li>
-    <li>Web Storage</li>
-    <li>Geolocation</li>
-    <li>Drag & Drop</li>
-    <li>Indexed DB</li>
-    <li>Canvas</li>
-    <li>MatchMedia</li>
-    <li>etc...</li>
-  </ul>
-  <br>
-  <hr>
-  <br>
-  <h3>Manejo del DOM</h3>
-  <p id="que-es">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis perspiciatis aut deleniti tempore. Voluptates dignissimos quidem deleniti aspernatur labore nisi inventore, temporibus aperiam tempora repellendus! Hic magnam facilis ab suscipit!
-  </p>
-  <nav id="menu">
+    .opacity-80 {
+      opacity: 0.8;
+    }
+
+    .sepia {
+      filter: sepia();
+    }
+  </style>
+  <body>
+    <h1>WEB APIs</h1>
+    <h2>DOM: Document Object Model</h2>
+    <h2>BOM: Browser Object Model</h2>
+    <h2>CSSOM: CSS Object Model</h2>
+    <h2>WEB APIs</h2>
     <ul>
-      <li><a href="#">Sección 1</a></li>
-      <li><a href="#">Sección 2</a></li>
-      <li><a href="#">Sección 3</a></li>
-      <li><a href="#">Sección 4</a></li>
-      <li><a href="#">Sección 5</a></li>
+      <li>Eventos</li>
+      <li>Forms</li>
+      <li>AJAX - Fetch</li>
+      <li>History</li>
+      <li>Web Storage</li>
+      <li>Geolocation</li>
+      <li>Drag & Drop</li>
+      <li>Indexed DB</li>
+      <li>Canvas</li>
+      <li>MatchMedia</li>
+      <li>etc...</li>
     </ul>
-  </nav>
-  <input type="text" name="nombre" placeholder="Nombre">
-  <a class="link-dom" href="dom.html" style="background-color: #F7DF1E; color: #222;" data-id = "1" data-description="Document Object Model">DOM</a>
-  <section class="cards">
-    <figure class="card">
-      <img src="https://picsum.photos/id/1/200/200" alt="Tech">
-      <figcaption>Tech</figcaption>
-    </figure>
-    <figure class="card">
-      <img src="https://picsum.photos/id/200/200/200" alt="animals">
-      <figcaption>animals</figcaption>
-    </figure>
-    <figure class="card">
-      <img src="https://picsum.photos/id/173/200/200" alt="people">
-      <figcaption>people</figcaption>
-    </figure>
-    <figure class="card">
-      <img src="https://picsum.photos/id/43/200/200" alt="arch">
-      <figcaption>arch</figcaption>
-    </figure>
-    <figure class="card">
-      <img src="https://picsum.photos/id/28/200/200" alt="nature">
-      <figcaption>nature</figcaption>
-    </figure>
-  </section>
-  <script src="js/dom.js"></script>
-</body>
+    <br />
+    <hr />
+    <br />
+    <h3>Manejo del DOM</h3>
+    <p id="que-es">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+      perspiciatis aut deleniti tempore. Voluptates dignissimos quidem deleniti
+      aspernatur labore nisi inventore, temporibus aperiam tempora repellendus!
+      Hic magnam facilis ab suscipit!
+    </p>
+    <nav id="menu">
+      <ul>
+        <li><a href="#">Sección 1</a></li>
+        <li><a href="#">Sección 2</a></li>
+        <li><a href="#">Sección 3</a></li>
+        <li><a href="#">Sección 4</a></li>
+        <li><a href="#">Sección 5</a></li>
+      </ul>
+    </nav>
+    <input type="text" name="nombre" placeholder="Nombre" />
+    <a
+      class="link-dom"
+      href="dom.html"
+      style="background-color: #f7df1e; color: #222"
+      data-id="1"
+      data-description="Document Object Model"
+      >DOM</a
+    >
+    <section class="cards">
+      <figure class="card">
+        <img src="https://picsum.photos/id/1/200/200" alt="Tech" />
+        <figcaption>Tech</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="https://picsum.photos/id/200/200/200" alt="animals" />
+        <figcaption>animals</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="https://picsum.photos/id/173/200/200" alt="people" />
+        <figcaption>people</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="https://picsum.photos/id/43/200/200" alt="arch" />
+        <figcaption>arch</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="https://picsum.photos/id/28/200/200" alt="nature" />
+        <figcaption>nature</figcaption>
+      </figure>
+    </section>
+    <script src="js/dom.js"></script>
+  </body>
 </html>
