@@ -4,7 +4,7 @@
 // const hablar = (texto) => speechSynthesis.speak(new SpeechSynthesisUtterance(texto))
 // hablar(texto)
 
-// *************60. DOM: INTRODUCCIÓN*************
+// *************61. DOM: INTRODUCCIÓN*************
 // console.log(window.document);
 // console.log(document);
 // console.log(document.head);
@@ -88,12 +88,12 @@
 
 // *************64. DOM: Estilos y Variables CSS*************
 // const $linkDOM = document.querySelector(".link-dom")
-// console.log($linkDOM.style);
+// // console.log($linkDOM.style);
 // console.log($linkDOM.getAttribute("style"));
 
 // console.log($linkDOM.style.backgroundColor);
 // console.log($linkDOM.style.color);
-// console.log(window.getComputedStyle($linkDOM));
+// // console.log(window.getComputedStyle($linkDOM));
 // console.log(getComputedStyle($linkDOM).getPropertyValue("color"));
 
 // $linkDOM.style.setProperty("text-decoration", "none")
@@ -105,10 +105,10 @@
 // $linkDOM.style.padding = "1rem"
 // $linkDOM.style.borderRadius = ".5rem"
 
-// console.log("----");
-// console.log($linkDOM.style);
+// console.log("------------");
+// // console.log($linkDOM.style);
 // console.log($linkDOM.getAttribute("style"));
-// console.log(getComputedStyle($linkDOM));
+// // console.log(getComputedStyle($linkDOM));
 
 // //Variables CSS - Custom Properties CSS
 // const $html = document.documentElement,
@@ -127,13 +127,24 @@
 
 // $body.style.setProperty("background-color", varDarkColor)
 
-// console.log(getComputedStyle($html));
+// // console.log(getComputedStyle($html));
 
 
 
 
 // *************65. DOM: Clases CSS *************
-const $card = document.querySelector(".card");
-console.log($card);
-console.log($card.className);
-console.log($card.classList.contains("rotate-45"));
+// const $card = document.querySelector(".card");
+// console.log($card);
+// console.log($card.className);
+// console.log($card.classList);
+// console.log($card.classList.contains("rotate-45"));
+// $card.classList.add("rotate-45")
+// $card.classList.remove("rotate-45")
+// $card.classList.toggle("rotate-45")
+// $card.classList.toggle("rotate-45")
+// $card.classList.toggle("rotate-45")
+// $card.classList.replace("rotate-45", "rotate-135")
+// $card.classList.add("opacity-80", "sepia")
+// $card.classList.remove("opacity-80", "sepia")
+// $card.classList.toggle("opacity-80", "sepia")
+
