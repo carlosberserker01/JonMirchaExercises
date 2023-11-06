@@ -148,3 +148,20 @@
 // $card.classList.remove("opacity-80", "sepia")
 // $card.classList.toggle("opacity-80", "sepia")
 
+
+
+
+// *************66. DOM: Texto y HTML *************
+// const $whatIsDOM = document.getElementById('que-es')
+// console.log($whatIsDOM);
+
+// let text = `
+//   <p>Hola hola</p>
+//   <p>Adios adios</p>
+//   <p>Que tal que tal</p>
+// `
+
+// // $whatIsDOM.innerText = text;
+// $whatIsDOM.textContent = text;
+// $whatIsDOM.innerHTML = text;
+// $whatIsDOM.outerHTML = text;
