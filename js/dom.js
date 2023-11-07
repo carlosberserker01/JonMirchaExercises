@@ -170,12 +170,89 @@
 
 
 // *************67. DOM Traversing: Recorriendo el DOM *************
-const $cards = document.querySelector('.cards')
-console.log($cards);
-console.log($cards.children);
-console.log($cards.children[2]);
-console.log($cards.parentElement);
-console.log($cards.firstChild);
-console.log($cards.firstElementChild);
-console.log($cards.lastChild);
-console.log($cards.lastElementChild);
+// const $cards = document.querySelector('.cards')
+// console.log($cards);
+// console.log($cards.children);
+// console.log($cards.children[2]);
+// console.log($cards.parentElement);
+// console.log($cards.firstChild);
+// console.log($cards.firstElementChild);
+// console.log($cards.lastChild);
+// console.log($cards.lastElementChild);
+// console.log($cards.previousElementSibling);
+// console.log($cards.nextElementSibling);
+// console.log($cards.children[3].closest("section"));
+
+
+
+
+// *************68. DOM: Creando Elementos y Fragmentos *************
+const $figure = document.createElement("figure"),
+      $img = document.createElement("img"),
+      $figcaption = document.createElement("figcaption"),
+      $figcaptionText = document.createTextNode("Animals"),
+      $cards = document.querySelector(".cards"),
+      $figure2 = document.createElement("figure")
+
+$img.setAttribute("src", "https://picsum.photos/id/280/200/200");
+$img.setAttribute("alt", "Animals")
+
+$figure.classList.add("card")
+$figcaption.appendChild($figcaptionText)
+$figure.appendChild($img)
+$figure.appendChild($figcaption)
+
+$cards.appendChild($figure)
+
+$figure2.innerHTML = `
+  <img src="https://picsum.photos/id/380/200/200" alt="People">
+  <figcaption>People</figcaption>
+`;
+
+$figure2.classList.add("card")
+$cards.appendChild($figure2)
+
+const estaciones = ["Primavera", "Verano", "Otoño", "Invierno"]
+const $ul = document.createElement("ul")
+
+document.write("<h3>Estaciones del Año</h3>")
+document.body.appendChild($ul)
+
+//With createTextNode
+estaciones.forEach(el => {
+  const $li = document.createElement("li");
+  const $liText = document.createTextNode(el);
+  $li.appendChild($liText);
+  $ul.appendChild($li)
+})
+
+//With textContent
+estaciones.forEach(el => {
+  const $li = document.createElement("li");
+  $li.textContent = el;
+  $ul.appendChild($li)
+})
+
+//With innerHTML
+const continentes = ["Africa", "America", "Asia", "Europa", "Oceania"]
+const $ul2 = document.createElement("ul");
+
+document.write("<h3>Continentes del mundo</h3>");
+document.body.appendChild($ul2);
+$ul2.innerHTML = ""
+continentes.forEach(el => $ul2.innerHTML += `<li>${el}</li>`)
+
+//With fragmentation
+const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+const $ul3 = document.createElement('ul');
+const $fragment = document.createDocumentFragment();
+
+meses.forEach(el => {
+  const $li = document.createElement('li');
+        $li.textContent = el;
+        $fragment.appendChild($li);
+})
+
+document.write("<h3>Meses del año</h3>");
+$ul3.appendChild($fragment)
+document.body.appendChild($ul3)
