@@ -187,72 +187,115 @@
 
 
 // *************68. DOM: Creando Elementos y Fragmentos *************
-const $figure = document.createElement("figure"),
-      $img = document.createElement("img"),
-      $figcaption = document.createElement("figcaption"),
-      $figcaptionText = document.createTextNode("Animals"),
-      $cards = document.querySelector(".cards"),
-      $figure2 = document.createElement("figure")
+// const $figure = document.createElement("figure"),
+//       $img = document.createElement("img"),
+//       $figcaption = document.createElement("figcaption"),
+//       $figcaptionText = document.createTextNode("Animals"),
+//       $cards = document.querySelector(".cards"),
+//       $figure2 = document.createElement("figure")
 
-$img.setAttribute("src", "https://picsum.photos/id/280/200/200");
-$img.setAttribute("alt", "Animals")
+// $img.setAttribute("src", "https://picsum.photos/id/280/200/200");
+// $img.setAttribute("alt", "Animals")
 
-$figure.classList.add("card")
-$figcaption.appendChild($figcaptionText)
-$figure.appendChild($img)
-$figure.appendChild($figcaption)
+// $figure.classList.add("card")
+// $figcaption.appendChild($figcaptionText)
+// $figure.appendChild($img)
+// $figure.appendChild($figcaption)
 
-$cards.appendChild($figure)
+// $cards.appendChild($figure)
 
-$figure2.innerHTML = `
-  <img src="https://picsum.photos/id/380/200/200" alt="People">
-  <figcaption>People</figcaption>
-`;
+// $figure2.innerHTML = `
+//   <img src="https://picsum.photos/id/380/200/200" alt="People">
+//   <figcaption>People</figcaption>
+// `;
 
-$figure2.classList.add("card")
-$cards.appendChild($figure2)
+// $figure2.classList.add("card")
+// $cards.appendChild($figure2)
 
-const estaciones = ["Primavera", "Verano", "Otoño", "Invierno"]
-const $ul = document.createElement("ul")
+// const estaciones = ["Primavera", "Verano", "Otoño", "Invierno"]
+// const $ul = document.createElement("ul")
 
-document.write("<h3>Estaciones del Año</h3>")
-document.body.appendChild($ul)
+// document.write("<h3>Estaciones del Año</h3>")
+// document.body.appendChild($ul)
 
-//With createTextNode
-estaciones.forEach(el => {
-  const $li = document.createElement("li");
-  const $liText = document.createTextNode(el);
-  $li.appendChild($liText);
-  $ul.appendChild($li)
-})
+// //With createTextNode
+// estaciones.forEach(el => {
+//   const $li = document.createElement("li");
+//   const $liText = document.createTextNode(el);
+//   $li.appendChild($liText);
+//   $ul.appendChild($li)
+// })
 
-//With textContent
-estaciones.forEach(el => {
-  const $li = document.createElement("li");
-  $li.textContent = el;
-  $ul.appendChild($li)
-})
+// //With textContent
+// estaciones.forEach(el => {
+//   const $li = document.createElement("li");
+//   $li.textContent = el;
+//   $ul.appendChild($li)
+// })
 
-//With innerHTML
-const continentes = ["Africa", "America", "Asia", "Europa", "Oceania"]
-const $ul2 = document.createElement("ul");
+// //With innerHTML
+// const continentes = ["Africa", "America", "Asia", "Europa", "Oceania"]
+// const $ul2 = document.createElement("ul");
 
-document.write("<h3>Continentes del mundo</h3>");
-document.body.appendChild($ul2);
-$ul2.innerHTML = ""
-continentes.forEach(el => $ul2.innerHTML += `<li>${el}</li>`)
+// document.write("<h3>Continentes del mundo</h3>");
+// document.body.appendChild($ul2);
+// $ul2.innerHTML = ""
+// continentes.forEach(el => $ul2.innerHTML += `<li>${el}</li>`)
 
-//With fragmentation
-const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
-const $ul3 = document.createElement('ul');
-const $fragment = document.createDocumentFragment();
+// //With fragmentation
+// const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+// const $ul3 = document.createElement('ul');
+// const $fragment = document.createDocumentFragment();
 
-meses.forEach(el => {
-  const $li = document.createElement('li');
-        $li.textContent = el;
-        $fragment.appendChild($li);
-})
+// meses.forEach(el => {
+//   const $li = document.createElement('li');
+//         $li.textContent = el;
+//         $fragment.appendChild($li);
+// })
 
-document.write("<h3>Meses del año</h3>");
-$ul3.appendChild($fragment)
-document.body.appendChild($ul3)
+// document.write("<h3>Meses del año</h3>");
+// $ul3.appendChild($fragment)
+// document.body.appendChild($ul3)
+
+
+
+
+// *************69. DOM: Templates HTML  *************
+// const $cards = document.querySelector(".cards"),
+//   // no quiero apuntar a la referencia del elemento template, sino su contenido
+//   $template = document.getElementById("template-card").content,
+//   $fragment = document.createDocumentFragment(),
+//   cardContent = [
+//     {
+//       title: "Tecnologia",
+//       img: "https://picsum.photos/id/1/200/200",
+//     },
+//     {
+//       title: "Animales",
+//       img: "https://picsum.photos/id/1/200/200",
+//     },
+//     {
+//       title: "Arquitectura",
+//       img: "https://picsum.photos/id/1/200/200",
+//     },
+//     {
+//       title: "Gente",
+//       img: "https://picsum.photos/id/1/200/200",
+//     },
+//     {
+//       title: "Naturaleza",
+//       img: "https://picsum.photos/id/1/200/200",
+//     },
+//   ];
+
+//   cardContent.forEach(el => {
+//     $template.querySelector("img").setAttribute("src", el.img)
+//     $template.querySelector("img").setAttribute("alt", el.title)
+//     $template.querySelector("figcaption").textContent = el.title
+
+//     console.log($template);
+//     let $clone = document.importNode($template, true) //copia todo 
+//     $fragment.appendChild($clone)
+//   })
+
+//   $cards.appendChild($fragment)
