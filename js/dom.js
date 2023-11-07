@@ -299,3 +299,58 @@
 //   })
 
 //   $cards.appendChild($fragment)
+
+
+
+
+// ************* 70. DOM: Modificando Elementos (Old Style) *************
+// const $cards = document.querySelector(".cards"),
+//   $newCard = document.createElement("figure"),
+//   $cloneCards = $cards.cloneNode(true)
+
+// $newCard.innerHTML = `
+//   <img src="https://picsum.photos/id/222/200/200" alt="Any" />
+//   <figcaption>Any</figcaption>
+// `;
+// $newCard.classList.add("card")
+
+// // $cards.replaceChild($newCard, $cards.children[2])
+// // $cards.removeChild($cards.lastElementChild)
+// // $cards.insertBefore($newCard, $cards.firstElementChild)
+
+// document.body.appendChild($cloneCards)
+
+
+
+
+// ************* 71. DOM: Modificando Elementos (Cool Style) *************
+/*
+.insertAdjacent...
+  .insertAdjacentElement(position, el)
+  .insertAdjacentHTML(position, html)
+  .insertAdjacentText(position, text)
+
+Posiciones:
+  beforebegin(hermano anterior)
+  afterbegin(primer hijo)
+  beforeend(ultimo hijo)
+  afterend(hermano siguiente)
+*/
+const $cards = document.querySelector(".cards"),
+  $newCard = document.createElement("figure");
+
+// NO generar con innerHTML
+$newCard.innerHTML = `
+  <img src="https://picsum.photos/id/222/200/200" alt="Any" />
+  <figcaption>Any</figcaption>
+`;
+
+$contentCard = `
+  <img src="https://picsum.photos/id/222/200/200" alt="Any" />
+  <figcaption></figcaption>
+`;
+$newCard.classList.add("card");
+
+// $cards.insertAdjacentElement("beforebegin", $newCard)
+$cards.insertAdjacentElement("afterbegin", $newCard)
+// $cards.insertAdjacentHTML("beforebegin", $newCard)
