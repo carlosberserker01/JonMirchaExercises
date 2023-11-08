@@ -325,32 +325,111 @@
 
 // ************* 71. DOM: Modificando Elementos (Cool Style) *************
 /*
-.insertAdjacent...
-  .insertAdjacentElement(position, el)
-  .insertAdjacentHTML(position, html)
-  .insertAdjacentText(position, text)
+// .insertAdjacent...
+//   .insertAdjacentElement(position, el) NODO de tipo elemento
+//   .insertAdjacentHTML(position, html) TEXTO en formato html
+//   .insertAdjacentText(position, text) TEXTO
 
-Posiciones:
-  beforebegin(hermano anterior)
-  afterbegin(primer hijo)
-  beforeend(ultimo hijo)
-  afterend(hermano siguiente)
-*/
-const $cards = document.querySelector(".cards"),
-  $newCard = document.createElement("figure");
+// Posiciones:
+//   beforebegin(hermano anterior)
+//   afterbegin(primer hijo)
+//   beforeend(ultimo hijo)
+//   afterend(hermano siguiente)
+// */
+// const $cards = document.querySelector(".cards"),
+//   $newCard = document.createElement("figure");
 
-// NO generar con innerHTML
-$newCard.innerHTML = `
-  <img src="https://picsum.photos/id/222/200/200" alt="Any" />
-  <figcaption>Any</figcaption>
-`;
+// // NO generar con innerHTML
+// // $newCard.innerHTML = `
+// //   <img src="https://picsum.photos/id/222/200/200" alt="Any" />
+// //   <figcaption>Any</figcaption>
+// // `;
 
-$contentCard = `
-  <img src="https://picsum.photos/id/222/200/200" alt="Any" />
-  <figcaption></figcaption>
-`;
-$newCard.classList.add("card");
+// let $contentCard = `
+// <img src="https://picsum.photos/id/222/200/200" alt="Any" />
+// <figcaption></figcaption>
+// `;
 
-// $cards.insertAdjacentElement("beforebegin", $newCard)
-$cards.insertAdjacentElement("afterbegin", $newCard)
-// $cards.insertAdjacentHTML("beforebegin", $newCard)
+// $newCard.classList.add("card");
+
+// $newCard.insertAdjacentHTML("beforeend", $contentCard)
+// $newCard.querySelector("figcaption").insertAdjacentText("afterbegin", "ANY")
+// // $cards.insertAdjacentElement("afterbegin", $newCard)
+
+// $cards.prepend($newCard) //primer hijo
+// $cards.append($newCard) // ultimo hijo
+// $cards.before($newCard) // hermano anterior
+// $cards.after($newCard) // hermano siguiente
+
+
+
+
+// ************* 72. DOM: Manejadores de Eventos *************
+// function holaMundo() {
+//   alert("Hola mundo")
+//   console.log("hola mundo 1", event);
+// }
+
+// const $eventoSemantico = document.getElementById("evento-semantico"),
+//   $eventoMultiple = document.getElementById("evento-multiple")
+
+// //esto es como asignar la funcion a la propiedad onClick del boton
+// //Agregando el segundo onclick reemplaza la primera
+// $eventoSemantico.onclick = holaMundo; //sin parentesis
+// $eventoSemantico.onclick = function (e) { //las funciones de event handler no pueden recibir parametros
+//   alert("Hola mundo manejador de eventos semanticos");
+//   console.log(e);
+//   console.log(event);
+// }
+
+// //con evento multiple se quita la palabra on
+// //funcion sin parentesis porque si no lo ejecuta inmediatamente
+// $eventoMultiple.addEventListener("click", holaMundo);
+// $eventoMultiple.addEventListener("click", (e) => {
+//   alert("Manejador de eventos multiples");
+//   console.log("segundo", e);
+//   console.log(e.type);
+//   console.log(e.target);
+// });
+
+
+
+
+// ************* 73. DOM: Eventos con Parámetros y Remover Eventos *************
+// function holaMundo() {
+//   alert("Hola mundo")
+//   console.log("hola mundo 1", event);
+// }
+
+// function saludar(nombre = "Desconocid@") {
+//   alert(`Hola ${nombre}`)
+//   console.log(event);
+// }
+
+// const $eventoMultiple = document.getElementById("evento-multiple");
+
+// $eventoMultiple.addEventListener("click", holaMundo);
+// $eventoMultiple.addEventListener("click", (e) => {
+//   alert("Manejador de eventos multiples");
+//   console.log("segundo", e);
+//   console.log(e.type);
+//   console.log(e.target);
+// });
+// //Para mandar parametros hay que hacerlo con una funcion anonima o arrow function anonima
+// //
+// $eventoMultiple.addEventListener("click", () => {
+//   saludar()
+//   saludar("Carlos")
+// });
+
+// const removerDobleClick = (e) => {
+//   alert(`Removiendo el evento de tipo ${e.type}`)
+//   console.log("AAA", e);
+//   $eventoRemover.removeEventListener("dblclick", removerDobleClick)
+//   $eventoRemover.disabled = true;
+// }
+
+// // Para remover solo es con manejadores multiples
+// const $eventoRemover = document.getElementById("evento-remover");
+// //como aqui ya no se ejecuta con arrow function, la funcion removerDobleClick va sin parentesis
+// $eventoRemover.addEventListener("dblclick", removerDobleClick)

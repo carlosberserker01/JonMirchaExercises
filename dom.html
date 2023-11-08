@@ -45,6 +45,25 @@
     .sepia {
       filter: sepia();
     }
+
+    .eventos-flujo div {
+      padding: 4rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .uno {
+      background-color: yellow;
+      opacity: 0.5;
+    }
+
+    .dos {
+      background-color: gold;
+    }
+
+    .tres {
+      background-color: lightyellow;
+    }
   </style>
   <body>
     <h1>WEB APIs</h1>
@@ -122,6 +141,32 @@
         <figcaption></figcaption>
       </figure>
     </template>
+    <h3>Eventos en JavaScript</h3>
+    <h4>Manejadores de eventos</h4>
+    <button onclick="holaMundo()">Evento con atributo HTML</button>
+    <br>
+    <br>
+    <button id="evento-semantico">Evento con manejador semántico</button>
+    <br>
+    <br>
+    <button id="evento-multiple">Evento multiple</button>
+    <br>
+    <br>
+    <button id="evento-remover">Removiendo eventos con manejadores multiples</button>
+    <br>
+    <br>
+    <h4>Flujo de Eventos</h4>
+    <section class="eventos-flujo">
+      <div class="uno">
+        1
+        <div class="dos">
+          2
+          <div class="tres">
+            3
+          </div>
+        </div>
+      </div>
+    </section>
     <script src="js/dom.js"></script>
   </body>
 </html>
